@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "926632091991",
+    "firebase_url": "https://virtbook-69420.firebaseio.com",
+    "project_id": "virtbook-69420",
+    "storage_bucket": "virtbook-69420.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926632091991:android:9815898d443487a9391e12",
+        "android_client_info": {
+          "package_name": "com.example.virtbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926632091991-8ts2r4aqfvos2vuodfvq0sih9njnr12e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwUa6FKLBYyiidk0EorlKrkQSCQrgVT4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926632091991-8ts2r4aqfvos2vuodfvq0sih9njnr12e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
