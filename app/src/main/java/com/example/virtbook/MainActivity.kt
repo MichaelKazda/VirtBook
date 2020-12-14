@@ -6,8 +6,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
+import com.onesignal.OneSignal
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +22,14 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
 
-        val token = FirebaseMessaging.getInstance()
+        // Logging set to help debug issues, remove before releasing your app.
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+            .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+            .unsubscribeWhenNotificationsAreDisabled(true)
+            .init()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

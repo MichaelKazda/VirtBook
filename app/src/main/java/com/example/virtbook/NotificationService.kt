@@ -12,5 +12,4 @@ class NotificationService : FirebaseMessagingService(){
         // TODO Sends new token to server and registers it
         //registerInstanceOnServer(token)
     }
-
 }
