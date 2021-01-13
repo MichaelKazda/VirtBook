@@ -9,4 +9,15 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="garageHeading">Garáž</string>
+    <string name="checkBtnText">Zobrazit prohlídku</string>
+    <string name="stk_kontrola">STK kontrola</string>
+    <string name="km">km</string>
+    <string name="kmCheckHeadline">Doporučená prohlídka vozu za</string>
+    <string name="oilCheckHeadline">Výměna oleje</string>
+    <string name="historyBtnHeadline">SERVISNÍ KNÍŽKA</string>
+    <string name="scoreText">Úroveň péče o vůz</string>
+    <string name="statsTotalKmHeadline">Celkově najeté kilometry</string>
+    <string name="statsTotalCostsHeadline">Kč</string>
+    <string name="statsTotalCostsTitle">Celkové náklady na údržbu</string>
 </resources>

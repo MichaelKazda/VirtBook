@@ -1,18 +1,20 @@
 
 package com.example.virtbook
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import com.anychart.AnyChart
+import com.anychart.AnyChart.sunburst
+import com.anychart.AnyChartView
+import com.anychart.chart.common.dataentry.DataEntry
+import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -32,8 +34,33 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Creation and settings of score graph
+        val graph = AnyChart.pie()
+        graph.palette(arrayOf("#000000", "#ffffff"))
+        graph.innerRadius("80%")
+        graph.legend().enabled(false)
+        graph.title().enabled(false)
+        graph.labels().enabled(false)
+        graph.animation().enabled(false)
+        graph.hovered().explode("0%")
+        graph.hovered().outline().enabled(false)
+        graph.selected().explode("0%")
+        graph.selected().outline().enabled(false)
+        graph.tooltip().enabled(false)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
+        //Setting graph values
+        val score = 56
+        view.findViewById<TextView>(R.id.scoreNumber).text = score.toString() + "%"
+        val data: MutableList<DataEntry> = ArrayList()
+        data.add(ValueDataEntry("", score)) // Score
+        data.add(ValueDataEntry("", 100 - score)) // Rest of pie graph
+        graph.data(data)
+
+        //Creating graph
+        val anyChartView = view.findViewById<View>(R.id.scoreGraph) as AnyChartView
+        anyChartView.setChart(graph)
+
+        /*view.findViewById<Button>(R.id.button_first).setOnClickListener {
             var checksData = ""
             db.collection("checks").get().addOnSuccessListener { result ->
                 for (document in result){
@@ -44,6 +71,6 @@ class FirstFragment : Fragment() {
                     view.findViewById<TextView>(R.id.textview_first).text = checksData
                 }
             }
-        }
+        }*/
     }
 }
