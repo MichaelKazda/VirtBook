@@ -4,126 +4,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    android:layout_height="wrap_content"
+    tools:context=".FirstFragment"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <View
-            android:id="@+id/garage_bg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
-            android:background="@drawable/garage_bg"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/headingGarage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins_thin"
-            android:text="@string/garageHeading"
-            android:textColor="#000000"
-            android:textSize="35sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/carBrand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="108dp"
-            android:fontFamily="@font/poppins_thin"
-            android:text="Škoda"
-            android:textColor="#000000"
-            android:textSize="35sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.045"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/garage_bg"
+        >
 
         <TextView
             android:id="@+id/kmCheckCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="230dp"
+            android:layout_height="46dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins"
             android:text="5255"
             android:textColor="#232323"
             android:textSize="35sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kmCheckHeadline" />
-
-        <TextView
-            android:id="@+id/oilCheckDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/poppins"
-            android:text="15.12.2020"
-            android:textColor="#730000"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/oilCheckHeadline" />
-
-        <TextView
-            android:id="@+id/STKCheckDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:fontFamily="@font/poppins"
-            android:text="5.10.2021"
-            android:textColor="#232323"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/oilCheckDate"
-            app:layout_constraintTop_toBottomOf="@+id/STKCheckHeadline" />
-
+            app:layout_constraintTop_toTopOf="@+id/kmCheckHeadline" />
 
         <TextView
             android:id="@+id/STKCheckHeadline"
-            android:layout_width="83dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="124dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="107dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_thin"
             android:text="@string/stk_kontrola"
             android:textColor="#5E5E5E"
             android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.397"
             app:layout_constraintStart_toEndOf="@+id/oilCheckHeadline"
             app:layout_constraintTop_toBottomOf="@+id/kmCheckCount" />
-
-        <TextView
-            android:id="@+id/kmCheckSign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins"
-            android:text="@string/km"
-            android:textColor="#232323"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/kmCheckCount"
-            app:layout_constraintTop_toBottomOf="@+id/kmCheckHeadline" />
 
         <TextView
             android:id="@+id/carModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="17dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Octavia"
             android:textColor="#000000"
-            android:textSize="65sp"
+            android:textSize="55sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintHorizontal_bias="0.115"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/carBrand" />
 
@@ -141,16 +68,56 @@
             app:iconGravity="end"
             app:iconPadding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.061"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/carModel" />
+
+        <TextView
+            android:id="@+id/carBrand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_thin"
+            android:text="Škoda"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/bookIDHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins_thin"
+            android:text="BookID: "
+            android:textColor="#5E5E5E"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBtn" />
+
+        <TextView
+            android:id="@+id/bookID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="AS52S"
+            android:textColor="#5E5E5E"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/bookIDHeading"
+            app:layout_constraintTop_toBottomOf="@+id/checkBtn" />
 
         <TextView
             android:id="@+id/kmCheckHeadline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="@font/poppins_thin"
             android:text="@string/kmCheckHeadline"
             android:textColor="#5E5E5E"
@@ -163,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_thin"
             android:text="@string/oilCheckHeadline"
             android:textColor="#5E5E5E"
@@ -171,55 +138,81 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/kmCheckCount" />
 
-
-
         <com.anychart.AnyChartView
             android:id="@+id/scoreGraph"
             android:layout_width="336dp"
             android:layout_height="256dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="500dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="370dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/oilCheckDate">
+            app:layout_constraintTop_toTopOf="@+id/errorsCount"
+            app:layout_constraintVertical_bias="0.0">
 
-                <TextView
-                    android:id="@+id/scoreNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="70dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="80%"
-                    android:textColor="#232323"
-                    android:textSize="50sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent" />
+            <TextView
+                android:id="@+id/scoreNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="80%"
+                android:textAlignment="center"
+                android:textColor="#232323"
+                android:textSize="50sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
 
-                <TextView
-                    android:id="@+id/scoreText"
-                    android:layout_width="159dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="85dp"
-                    android:layout_marginTop="130dp"
-                    android:fontFamily="@font/poppins_thin"
-                    android:lineSpacingExtra="-15sp"
-                    android:text="@string/scoreText"
-                    android:textAlignment="center"
-                    android:textColor="#232323"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent" />
+            <TextView
+                android:id="@+id/scoreText"
+                android:layout_width="107dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="114dp"
+                android:layout_marginTop="140dp"
+                android:fontFamily="@font/poppins_thin"
+                android:lineSpacingExtra="-5sp"
+                android:text="@string/scoreText"
+                android:textAlignment="center"
+                android:textColor="#232323"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
 
         </com.anychart.AnyChartView>
+
+        <TextView
+            android:id="@+id/oilCheckDate"
+            android:layout_width="147dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
+            android:text="15.12.2020"
+            android:textColor="#730000"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/oilCheckHeadline" />
+
+        <TextView
+            android:id="@+id/errorsCount"
+            android:layout_width="150dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins"
+            android:text="5.10.2021"
+            android:textColor="#232323"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintStart_toEndOf="@+id/oilCheckDate"
+            app:layout_constraintTop_toBottomOf="@+id/STKCheckHeadline" />
 
         <Button
             android:id="@+id/historyBtn"
             android:layout_width="253dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="430dp"
+            android:layout_marginBottom="323dp"
             android:background="@drawable/check_btn"
             android:fontFamily="@font/poppins"
             android:text="@string/historyBtnHeadline"
@@ -232,17 +225,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/statsTotalKmNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/poppins"
-                android:text="88 545"
-                android:textColor="#232323"
-                android:textSize="25sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statsTotalKmHeadline" />
+        <TextView
+            android:id="@+id/statsTotalKmNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins"
+            android:text="88 545"
+            android:textColor="#232323"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsTotalKmHeadline" />
 
         <TextView
             android:id="@+id/statsTotalKmHeadline"
@@ -258,53 +251,81 @@
             app:layout_constraintTop_toBottomOf="@+id/historyBtn" />
 
         <TextView
-            android:id="@+id/statsTotalKmSign"
+            android:id="@+id/statsTotalCostsNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
+            android:layout_marginStart="20dp"
             android:fontFamily="@font/poppins"
-            android:text="@string/km"
+            android:text="43 566"
             android:textColor="#232323"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/statsTotalKmNumber"
-            app:layout_constraintTop_toBottomOf="@+id/statsTotalKmHeadline" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsTotalCostsHeadline" />
 
-            <TextView
-                android:id="@+id/statsTotalCostsNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/poppins"
-                android:text="43 566"
-                android:textColor="#232323"
-                android:textSize="25sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statsTotalCostsHeadline" />
+        <TextView
+            android:id="@+id/statsTotalCostsHeadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_thin"
+            android:text="@string/statsTotalCostsTitle"
+            android:textColor="#5E5E5E"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsTotalKmNumber" />
 
-            <TextView
-                android:id="@+id/statsTotalCostsHeadline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/poppins_thin"
-                android:text="@string/statsTotalCostsTitle"
-                android:textColor="#5E5E5E"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statsTotalKmNumber" />
+        <TextView
+            android:id="@+id/statsTotalFixesNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins"
+            android:text="20"
+            android:textColor="#232323"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsTotalFixes" />
 
-            <TextView
-                android:id="@+id/statsTotalCostsSign"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:fontFamily="@font/poppins"
-                android:textColor="#232323"
-                android:textSize="20sp"
-                android:text="@string/statsTotalCostsHeadline"
-                app:layout_constraintStart_toEndOf="@+id/statsTotalCostsNumber"
-                app:layout_constraintTop_toBottomOf="@+id/statsTotalCostsHeadline" />
+        <TextView
+            android:id="@+id/statsTotalFixes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_thin"
+            android:text="@string/totalFixesHeadline"
+            android:textColor="#5E5E5E"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsTotalCostsNumber" />
+
+        <TextView
+            android:id="@+id/statsTotalDaysNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins"
+            android:text="365"
+            android:textColor="#232323"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsTotalDays" />
+
+        <TextView
+            android:id="@+id/statsTotalDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_thin"
+            android:text="@string/statsTotalDaysHeadline"
+            android:textColor="#5E5E5E"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statsTotalFixesNumber" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

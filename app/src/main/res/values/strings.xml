@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Serviní knížka AUTOMATO</string>
+    <string name="app_name">Serviní knížka</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -16,8 +16,13 @@
     <string name="kmCheckHeadline">Doporučená prohlídka vozu za</string>
     <string name="oilCheckHeadline">Výměna oleje</string>
     <string name="historyBtnHeadline">SERVISNÍ KNÍŽKA</string>
-    <string name="scoreText">Úroveň péče o vůz</string>
+    <string name="scoreText">ÚROVEŇ PÉČE O VŮZ</string>
     <string name="statsTotalKmHeadline">Celkově najeté kilometry</string>
     <string name="statsTotalCostsHeadline">Kč</string>
     <string name="statsTotalCostsTitle">Celkové náklady na údržbu</string>
+    <string name="totalFixesHeadline">Celkový počet úkonů</string>
+    <string name="statsTotalDaysHeadline">Doba existence servisní knížky</string>
+    <string name="carCheckHeadline">Prohlídka vozu</string>
+    <string name="errorsCountHeadline">Počet nálezů</string>
+    <string name="fixPriceHeadline">Odhad ceny opravy</string>
 </resources>

@@ -1,27 +1,31 @@
 
 package com.example.virtbook
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.anychart.AnyChart
-import com.anychart.AnyChart.sunburst
 import com.anychart.AnyChartView
-import com.anychart.chart.common.dataentry.DataEntry
-import com.anychart.chart.common.dataentry.ValueDataEntry
+import com.example.virtbook.services.DataHandler
+import com.example.virtbook.services.GraphicsMaker
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
- * A simple [Fragment] subclass as the default destination in the navigation.
+ * Main garage site
  */
 class FirstFragment : Fragment() {
-    // Access a Cloud Firestore instance from your Activity
-    val db = Firebase.firestore
+    private val graphicsMaker = GraphicsMaker() // Handling graphics
+    private val dataHandler = DataHandler() // Handling data
+    private val db = Firebase.firestore // Access Firestore DB
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -34,43 +38,53 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Creation and settings of score graph
-        val graph = AnyChart.pie()
-        graph.palette(arrayOf("#000000", "#ffffff"))
-        graph.innerRadius("80%")
-        graph.legend().enabled(false)
-        graph.title().enabled(false)
-        graph.labels().enabled(false)
-        graph.animation().enabled(false)
-        graph.hovered().explode("0%")
-        graph.hovered().outline().enabled(false)
-        graph.selected().explode("0%")
-        graph.selected().outline().enabled(false)
-        graph.tooltip().enabled(false)
+        /*GETTING DATA*/
+        db.collection("users").document(MyApp.userID).get().addOnSuccessListener { result ->
+            if (result != null){
+                val carData = dataHandler.getDataGarage(result, "carData")
+                val reminders = dataHandler.getDataGarage(result, "reminders")
+                val stats = dataHandler.getDataGarage(result, "stats")
 
-        //Setting graph values
-        val score = 56
-        view.findViewById<TextView>(R.id.scoreNumber).text = score.toString() + "%"
-        val data: MutableList<DataEntry> = ArrayList()
-        data.add(ValueDataEntry("", score)) // Score
-        data.add(ValueDataEntry("", 100 - score)) // Rest of pie graph
-        graph.data(data)
+                /*SETTING VARIABLES*/
+                // Car section
+                view.findViewById<TextView>(R.id.carBrand).text = carData["brand"].toString() // Car brand
+                view.findViewById<TextView>(R.id.carModel).text = carData["model"].toString() // Car model
+                view.findViewById<TextView>(R.id.bookID).text = MyApp.bookID // Book ID
 
-        //Creating graph
-        val anyChartView = view.findViewById<View>(R.id.scoreGraph) as AnyChartView
-        anyChartView.setChart(graph)
 
-        /*view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            var checksData = ""
-            db.collection("checks").get().addOnSuccessListener { result ->
-                for (document in result){
-                    val price = document.data["price"]
-                    val kmCount = document.data["kmCount"]
-                    val checkArea = document.data["checkArea"]
-                    checksData += "Cena -> $price Kč, Aktuálně najeto -> $kmCount km, Opraveno -> $checkArea \n"
-                    view.findViewById<TextView>(R.id.textview_first).text = checksData
+                // Reminders section
+                view.findViewById<TextView>(R.id.kmCheckCount).text = graphicsMaker.spanIndex(reminders["kmNextCheck"] as Long,"km", resources.getDimensionPixelSize(R.dimen.big_index)) // Car check KM reminder
+                view.findViewById<TextView>(R.id.kmCheckCount).setTextColor(Color.parseColor(graphicsMaker.kmCountColor(reminders["kmNextCheck"] as Long)))
+                /*!!!!!!!!!! TIMESTAMP ZKUSIT VYNASOBIT 1000 aby to bylo na stejne urovni milisekund !!!!!!!!*/
+                view.findViewById<TextView>(R.id.oilCheckDate).text = SimpleDateFormat("dd. MM. yyyy",  Locale.getDefault()).format(Timestamp(reminders["dateOilChange"] as Long)) // Oil change reminder
+                view.findViewById<TextView>(R.id.oilCheckDate).setTextColor(Color.parseColor(graphicsMaker.dateColor(Timestamp(reminders["dateOilChange"] as Long))))
+                /*!!!!!!!!!! TIMESTAMP ZKUSIT VYNASOBIT 1000 aby to bylo na stejne urovni milisekund !!!!!!!!*/
+                view.findViewById<TextView>(R.id.errorsCount).text = SimpleDateFormat("dd. MM. yyyy",  Locale.getDefault()).format(Timestamp(reminders["dateSTK"] as Long)) // STK Check reminder
+                view.findViewById<TextView>(R.id.errorsCount).setTextColor(Color.parseColor(graphicsMaker.dateColor(Timestamp(reminders["dateSTK"] as Long))))
+
+                // Car maintenance graph section
+                val score = 55
+                view.findViewById<TextView>(R.id.scoreNumber).text = score.toString() + "%"
+                // Creating graph with score
+                val anyChartView = view.findViewById<View>(R.id.scoreGraph) as AnyChartView
+                anyChartView.setChart(graphicsMaker.createGraph(score))
+
+                // Stats section
+                val indexSizeSmall = resources.getDimensionPixelSize(R.dimen.small_index)
+                view.findViewById<TextView>(R.id.statsTotalKmNumber).text = graphicsMaker.spanIndex(stats["kmTotal"] as Long,"km", indexSizeSmall) // Total km
+                view.findViewById<TextView>(R.id.statsTotalCostsNumber).text = graphicsMaker.spanIndex(stats["costsTotal"] as Long,"Kč", indexSizeSmall) // Total costs
+                view.findViewById<TextView>(R.id.statsTotalFixesNumber).text = graphicsMaker.spanIndex(stats["repairsTotal"] as Long,"úkonů", indexSizeSmall) // Total fixes
+                view.findViewById<TextView>(R.id.statsTotalDaysNumber).text = graphicsMaker.spanIndex(graphicsMaker.tsToDaysConv(Timestamp(stats["registerDay"] as Long), true),"dní", indexSizeSmall) // Total days
+
+                // Car check button
+                view.findViewById<Button>(R.id.checkBtn).setOnClickListener {
+                    // Creating new activity
+                    val intent = Intent(activity, SecondActivity::class.java).apply {
+                        putExtra("data", carData["carCheckData"].toString())
+                    }
+                    startActivity(intent)
                 }
             }
-        }*/
+        }
     }
 }
