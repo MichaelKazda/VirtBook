@@ -80,7 +80,7 @@ class FirstFragment : Fragment() {
                 view.findViewById<Button>(R.id.checkBtn).setOnClickListener {
                     // Creating new activity
                     val intent = Intent(activity, SecondActivity::class.java).apply {
-                        putExtra("data", carData["carCheckData"].toString())
+                        putExtra("data", carData["carCheck"].toString())
                     }
                     startActivity(intent)
                 }
