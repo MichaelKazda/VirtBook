@@ -2,6 +2,7 @@ package com.example.virtbook
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.virtbook.services.GraphicsMaker
 import com.google.gson.Gson
@@ -22,7 +23,9 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
 
         // Parsing JSON and generating views in Linear layout
-        val json = intent.getStringExtra("data")
+        val json = intent.getStringExtra("carCheckData")
+        val errorsTotal = intent.getStringExtra("errorsTotal")?.toLong()
+        val fixPrice = intent.getStringExtra("fixPrice")?.toLong()
         val data: Map<String, Any> = Gson().fromJson(
             json, object : TypeToken<HashMap<String?, Any?>?>() {}.type
         )
@@ -30,7 +33,6 @@ class SecondActivity : AppCompatActivity() {
         // TODO naládovat data do grafické šablony a vložit do listview
         val out = StringBuilder()
         val checklists = data["productChecklist"] as List<*>
-        var errorsCount = 0  // TODO spočítat celkový počet nálezů - inputType checkbox bool
         var x = 1
         while(x <= checklists.size - 1){
             val checkArea = checklists[x] as LinkedTreeMap<*,*>
@@ -50,5 +52,10 @@ class SecondActivity : AppCompatActivity() {
             x++
         }
         Log.e("EPICCCC", out.toString())
+
+        /*BINDING DATA TO FRONTEND*/
+        // Stats section
+        findViewById<TextView>(R.id.errorsCount).text = graphicsMaker.spanIndex(errorsTotal as Long,"nálezů", resources.getDimensionPixelSize(R.dimen.big_index)) // Total errors found stat
+        findViewById<TextView>(R.id.fixPrice).text = graphicsMaker.spanIndex(fixPrice as Long,"Kč", resources.getDimensionPixelSize(R.dimen.big_index)) // Costs for errors fixes
     }
 }

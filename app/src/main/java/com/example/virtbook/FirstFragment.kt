@@ -45,7 +45,7 @@ class FirstFragment : Fragment() {
                 val reminders = dataHandler.getDataGarage(result, "reminders")
                 val stats = dataHandler.getDataGarage(result, "stats")
 
-                /*SETTING VARIABLES*/
+                /*BINDING DATA TO FRONTEND*/
                 // Car section
                 view.findViewById<TextView>(R.id.carBrand).text = carData["brand"].toString() // Car brand
                 view.findViewById<TextView>(R.id.carModel).text = carData["model"].toString() // Car model
@@ -80,10 +80,15 @@ class FirstFragment : Fragment() {
                 view.findViewById<Button>(R.id.checkBtn).setOnClickListener {
                     // Creating new activity
                     val intent = Intent(activity, SecondActivity::class.java).apply {
-                        putExtra("data", carData["carCheck"].toString())
+                        // Passing data to new activity
+                        putExtra("carCheckData", carData["carCheck"].toString())
+                        putExtra("errorsTotal", stats["errorsTotal"].toString())
+                        putExtra("fixPrice", stats["fixPrice"].toString())
                     }
                     startActivity(intent)
                 }
+            }else{
+                // TODO Vypsat error, ze uzivatel neexistuje
             }
         }
     }
