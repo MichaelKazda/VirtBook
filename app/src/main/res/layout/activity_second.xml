@@ -15,13 +15,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/poppins_thin"
             android:text="@string/carCheckHeadline"
             android:textColor="#000000"
-            android:textSize="45sp"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.223"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,7 +29,7 @@
             android:id="@+id/errorsCountHeadline"
             android:layout_width="107dp"
             android:layout_height="17dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/poppins_thin"
             android:text="@string/errorsCountHeadline"
@@ -42,7 +42,7 @@
             android:id="@+id/errorsCount"
             android:layout_width="108dp"
             android:layout_height="32dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:fontFamily="@font/poppins"
             android:text="5"
             android:textColor="#232323"
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="60dp"
             android:fontFamily="@font/poppins_thin"
             android:text="@string/fixPriceHeadline"
             android:textColor="#5E5E5E"
@@ -67,7 +67,7 @@
             android:id="@+id/fixPrice"
             android:layout_width="127dp"
             android:layout_height="34dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="60dp"
             android:fontFamily="@font/poppins"
             android:text="20144"
             android:textColor="#232323"
@@ -75,26 +75,69 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fixPriceHeadline" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/checkContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fixPrice">
+            app:layout_constraintTop_toBottomOf="@+id/fixPrice"
+            app:layout_constraintVertical_bias="1.0"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/log"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="40dp"
-                android:fontFamily="@font/poppins_thin"
-                android:text="Log test"
-                android:textColor="#5E5E5E"
-                android:textSize="13sp"/>
+                android:background="#E81818">
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                <TextView
+                    android:id="@+id/log"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="40dp"
+                    android:fontFamily="@font/poppins_thin"
+                    android:text="Log test"
+                    android:textColor="#4CAF50"
+                    android:textSize="13sp" />
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#E81818">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="40dp"
+                    android:fontFamily="@font/poppins_thin"
+                    android:text="Log test"
+                    android:textColor="#4CAF50"
+                    android:textSize="13sp" />
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#E81818">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="40dp"
+                    android:fontFamily="@font/poppins_thin"
+                    android:text="Log test"
+                    android:textColor="#4CAF50"
+                    android:textSize="13sp" />
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
