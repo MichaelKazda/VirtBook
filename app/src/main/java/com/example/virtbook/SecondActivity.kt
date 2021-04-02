@@ -9,7 +9,6 @@ import com.google.gson.Gson
 import com.google.gson.internal.LinkedTreeMap
 import com.google.gson.reflect.TypeToken
 import java.lang.StringBuilder
-import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -55,7 +54,7 @@ class SecondActivity : AppCompatActivity() {
 
         /*BINDING DATA TO FRONTEND*/
         // Stats section
-        findViewById<TextView>(R.id.errorsCount).text = graphicsMaker.spanIndex(errorsTotal as Long,"nálezů", resources.getDimensionPixelSize(R.dimen.big_index)) // Total errors found stat
-        findViewById<TextView>(R.id.fixPrice).text = graphicsMaker.spanIndex(fixPrice as Long,"Kč", resources.getDimensionPixelSize(R.dimen.big_index)) // Costs for errors fixes
+        findViewById<TextView>(R.id.fixCount).text = graphicsMaker.spanIndex(errorsTotal as Long,"nálezů", resources.getDimensionPixelSize(R.dimen.big_index)) // Total errors found stat
+        findViewById<TextView>(R.id.fixCosts).text = graphicsMaker.spanIndex(fixPrice as Long,"Kč", resources.getDimensionPixelSize(R.dimen.big_index)) // Costs for errors fixes
     }
 }

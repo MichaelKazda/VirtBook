@@ -43,13 +43,13 @@
                     android:id="@+id/STKCheckHeadline"
                     android:layout_width="107dp"
                     android:layout_height="17dp"
-                    android:layout_marginStart="80dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_thin"
                     android:text="@string/stk_kontrola"
                     android:textColor="#5E5E5E"
                     android:textSize="13sp"
-                    app:layout_constraintStart_toEndOf="@+id/oilCheckHeadline"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/oilCheckDate"
                     app:layout_constraintTop_toBottomOf="@+id/kmCheckCount" />
 
                 <TextView
@@ -105,7 +105,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/poppins_thin"
-                    android:text="BookID: "
+                    android:text="@string/bookID"
                     android:textColor="#5E5E5E"
                     android:textSize="13sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -154,11 +154,11 @@
                     android:id="@+id/scoreGraph"
                     android:layout_width="336dp"
                     android:layout_height="256dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.493"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/errorsCount">
+                    app:layout_constraintTop_toTopOf="@+id/fixCount">
 
                     <TextView
                         android:id="@+id/scoreNumber"
@@ -204,24 +204,25 @@
                     app:layout_constraintTop_toTopOf="@+id/oilCheckHeadline" />
 
                 <TextView
-                    android:id="@+id/errorsCount"
+                    android:id="@+id/fixCount"
                     android:layout_width="150dp"
                     android:layout_height="29dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="1dp"
                     android:fontFamily="@font/poppins"
                     android:text="5.10.2021"
                     android:textColor="#232323"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.428"
+                    app:layout_constraintHorizontal_bias="0.486"
                     app:layout_constraintStart_toEndOf="@+id/oilCheckDate"
                     app:layout_constraintTop_toBottomOf="@+id/STKCheckHeadline" />
 
                 <Button
                     android:id="@+id/historyBtn"
                     android:layout_width="253dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="280dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="245dp"
                     android:background="@drawable/check_btn"
                     android:fontFamily="@font/poppins"
                     android:text="@string/historyBtnHeadline"
@@ -232,7 +233,7 @@
                     app:iconPadding="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/errorsCount" />
+                    app:layout_constraintTop_toBottomOf="@+id/fixCount" />
 
                 <TextView
                     android:id="@+id/statsTotalKmNumber"

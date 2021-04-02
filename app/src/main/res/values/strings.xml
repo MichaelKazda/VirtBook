@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Serviní knížka</string>
+    <string name="app_name">Servisní knížka</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -25,4 +25,8 @@
     <string name="carCheckHeadline">Prohlídka vozu</string>
     <string name="errorsCountHeadline">Počet nálezů</string>
     <string name="fixPriceHeadline">Odhad ceny opravy</string>
+    <string name="bookID">ID servisní knížky:</string>
+    <string name="fixHistoryHeadline">Servisní knížka</string>
+    <string name="fixCountHeadline">Počet úkonů</string>
+    <string name="fixCostsHeadline">Celkové náklady</string>
 </resources>

@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /* ONESIGNAL NOTIFICATION SETTING*/
+        /*SETTING UP ONESIGNAL NOTIFICATION*/
         // Notification logs
         OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
         // Initialization

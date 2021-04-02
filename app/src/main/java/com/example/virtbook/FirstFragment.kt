@@ -1,6 +1,7 @@
 
 package com.example.virtbook
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -29,6 +30,7 @@ class FirstFragment : Fragment() {
     private val db = Firebase.firestore // Access Firestore DB
 
     // Gets data from DB and binds it to frontend
+    @SuppressLint("SetTextI18n")
     fun bindData(){
         /*GETTING DATA*/
         db.collection("users").document(MyApp.userID).get().addOnSuccessListener { result ->
@@ -51,11 +53,18 @@ class FirstFragment : Fragment() {
                 view?.findViewById<TextView>(R.id.oilCheckDate)?.text = SimpleDateFormat("dd. MM. yyyy",  Locale.getDefault()).format(Timestamp(reminders["dateOilChange"] as Long))
                 view?.findViewById<TextView>(R.id.oilCheckDate)?.setTextColor(Color.parseColor(graphicsMaker.dateColor(Timestamp(reminders["dateOilChange"] as Long))))
                 // STK Check reminder
-                view?.findViewById<TextView>(R.id.errorsCount)?.text = SimpleDateFormat("dd. MM. yyyy",  Locale.getDefault()).format(Timestamp(reminders["dateSTK"] as Long))
-                view?.findViewById<TextView>(R.id.errorsCount)?.setTextColor(Color.parseColor(graphicsMaker.dateColor(Timestamp(reminders["dateSTK"] as Long))))
+                view?.findViewById<TextView>(R.id.fixCount)?.text = SimpleDateFormat("dd. MM. yyyy",  Locale.getDefault()).format(Timestamp(reminders["dateSTK"] as Long))
+                view?.findViewById<TextView>(R.id.fixCount)?.setTextColor(Color.parseColor(graphicsMaker.dateColor(Timestamp(reminders["dateSTK"] as Long))))
 
                 // Car maintenance graph section
-                val score = 55
+                val score = dataHandler.getMaintenanceScore(
+                        graphicsMaker.tsToDaysConv(Timestamp(reminders["dateOilChange"] as Long)),
+                        graphicsMaker.tsToDaysConv(Timestamp(reminders["dateSTK"] as Long)),
+                        reminders["kmNextCheck"] as Long,
+                        stats["kmTotal"] as Long,
+                        stats["repairsTotal"] as Long,
+                        stats["errorsTotal"] as Long
+                )
                 view?.findViewById<TextView>(R.id.scoreNumber)?.text = score.toString() + "%"
                 // Creating graph with score
                 val anyChartView = view?.findViewById<View>(R.id.scoreGraph) as AnyChartView
@@ -79,9 +88,25 @@ class FirstFragment : Fragment() {
                     }
                     startActivity(intent)
                 }
+
+                // Fix history button
+                view?.findViewById<Button>(R.id.historyBtn)?.setOnClickListener {
+                    // Creating new activity
+                    val intent = Intent(activity, fixHistory::class.java).apply {
+                        // Passing data to new activity
+                        putExtra("fixHistory", carData["repairHistory"].toString())
+                        putExtra("fixTotal", stats["repairsTotal"].toString())
+                        putExtra("costsTotal", stats["costsTotal"].toString())
+                    }
+                    startActivity(intent)
+                }
+
+                // Reset refresher
                 view?.findViewById<SwipeRefreshLayout>(R.id.refresher)?.isRefreshing = false
             }else{
-                // TODO Vypsat error, ze uzivatel neexistuje
+                // Error, user doesnt exist.
+                view?.findViewById<TextView>(R.id.carBrand)?.text = "Uživatel"
+                view?.findViewById<TextView>(R.id.carModel)?.text = "Nebyl nalezen"
             }
         }
     }
