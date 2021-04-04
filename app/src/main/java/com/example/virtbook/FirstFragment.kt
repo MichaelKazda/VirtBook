@@ -5,11 +5,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.anychart.AnyChartView
@@ -17,9 +19,11 @@ import com.example.virtbook.services.DataHandler
 import com.example.virtbook.services.GraphicsMaker
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.sql.Array
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Main garage site
@@ -35,9 +39,11 @@ class FirstFragment : Fragment() {
         /*GETTING DATA*/
         db.collection("users").document(MyApp.userID).get().addOnSuccessListener { result ->
             if (result != null){
+                // Obtaining data
                 val carData = dataHandler.getDataGarage(result, "carData")
                 val reminders = dataHandler.getDataGarage(result, "reminders")
                 val stats = dataHandler.getDataGarage(result, "stats")
+                val repairHistory = carData["repairHistory"] as ArrayList<*>
 
                 /*BINDING DATA TO FRONTEND*/
                 // Car section
@@ -77,28 +83,37 @@ class FirstFragment : Fragment() {
                 view?.findViewById<TextView>(R.id.statsTotalFixesNumber)?.text = graphicsMaker.spanIndex(stats["repairsTotal"] as Long,"úkonů", indexSizeSmall) // Total fixes
                 view?.findViewById<TextView>(R.id.statsTotalDaysNumber)?.text = graphicsMaker.spanIndex(graphicsMaker.tsToDaysConv(Timestamp(stats["registerDay"] as Long), true),"dní", indexSizeSmall) // Total days
 
+
                 // Car check button
                 view?.findViewById<Button>(R.id.checkBtn)?.setOnClickListener {
-                    // Creating new activity
-                    val intent = Intent(activity, SecondActivity::class.java).apply {
+                    if(carData["carCheck"].toString().isEmpty()){
+                        Toast.makeText(activity, "Nejdříve si nechte vůz prohlídnout.", Toast.LENGTH_SHORT).show()
+                    }else{
+                        // Creating new activity
+                        val intentCarCheck = Intent(activity, SecondActivity::class.java).apply {
                         // Passing data to new activity
-                        putExtra("carCheckData", carData["carCheck"].toString())
-                        putExtra("errorsTotal", stats["errorsTotal"].toString())
-                        putExtra("fixPrice", stats["fixPrice"].toString())
+                            putExtra("carCheckData", carData["carCheck"].toString())
+                            putExtra("errorsTotal", stats["errorsTotal"].toString())
+                            putExtra("fixPrice", stats["fixPrice"].toString())
+                        }
+                        startActivity(intentCarCheck)
                     }
-                    startActivity(intent)
                 }
 
                 // Fix history button
                 view?.findViewById<Button>(R.id.historyBtn)?.setOnClickListener {
-                    // Creating new activity
-                    val intent = Intent(activity, fixHistory::class.java).apply {
-                        // Passing data to new activity
-                        putExtra("fixHistory", carData["repairHistory"].toString())
-                        putExtra("fixTotal", stats["repairsTotal"].toString())
-                        putExtra("costsTotal", stats["costsTotal"].toString())
+                    if(carData["repairHistory"].toString().isEmpty()){
+                        Toast.makeText(activity, "Nejdříve si nechte vůz opravit.", Toast.LENGTH_SHORT).show()
+                    }else {
+                        // Creating new activity
+                        val intentFixHistory = Intent(activity, FixHistory::class.java).apply {
+                            // Passing data to new activity
+                            putExtra("fixHistory", repairHistory)
+                            putExtra("fixTotal", stats["repairsTotal"].toString())
+                            putExtra("costsTotal", stats["costsTotal"].toString())
+                        }
+                        startActivity(intentFixHistory)
                     }
-                    startActivity(intent)
                 }
 
                 // Reset refresher

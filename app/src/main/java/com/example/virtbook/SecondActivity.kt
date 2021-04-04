@@ -3,6 +3,7 @@ package com.example.virtbook
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.virtbook.services.GraphicsMaker
 import com.google.gson.Gson
@@ -29,7 +30,8 @@ class SecondActivity : AppCompatActivity() {
             json, object : TypeToken<HashMap<String?, Any?>?>() {}.type
         )
 
-        // TODO naládovat data do grafické šablony a vložit do listview
+        // TODO Opakovat proces jako u úkonů s vypsání do recycler view -> tentokrát dvojitý (vnitřní list check bodů a vnější list karet jednotlivých check sekcí)
+        // TODO Dokumentace
         val out = StringBuilder()
         val checklists = data["productChecklist"] as List<*>
         var x = 1

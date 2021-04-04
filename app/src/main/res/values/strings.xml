@@ -29,4 +29,5 @@
     <string name="fixHistoryHeadline">Servisní knížka</string>
     <string name="fixCountHeadline">Počet úkonů</string>
     <string name="fixCostsHeadline">Celkové náklady</string>
+    <string name="fixDetailHeadline">Detail úkonu</string>
 </resources>

@@ -11,7 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtBook">
         <activity
-            android:name=".fixHistory"
+            android:name=".FixDetail"
+            android:theme="@style/Theme.VirtBook.NoActionBar"
+            />
+        <activity
+            android:name=".FixHistory"
             android:theme="@style/Theme.VirtBook.NoActionBar" />
         <activity
             android:name=".SecondActivity"
@@ -22,7 +26,6 @@
             android:theme="@style/Theme.VirtBook.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

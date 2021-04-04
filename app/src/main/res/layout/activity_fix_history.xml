@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fixHistory">
+    tools:context=".FixHistory">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,13 +15,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="45dp"
-            android:fontFamily="@font/poppins_thin"
+            android:fontFamily="@font/poppins"
             android:text="@string/fixHistoryHeadline"
             android:textColor="#000000"
             android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.223"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,8 +29,7 @@
             android:id="@+id/fixCountHeadline"
             android:layout_width="107dp"
             android:layout_height="17dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins_thin"
             android:text="@string/fixCountHeadline"
             android:textColor="#5E5E5E"
@@ -42,7 +41,7 @@
             android:id="@+id/fixCount"
             android:layout_width="108dp"
             android:layout_height="32dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="15dp"
             android:fontFamily="@font/poppins"
             android:text="5"
             android:textColor="#232323"
@@ -54,7 +53,6 @@
             android:id="@+id/costsTotalHeadline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="88dp"
             android:fontFamily="@font/poppins_thin"
             android:text="@string/fixCostsHeadline"
@@ -74,6 +72,17 @@
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/costsTotalHeadline" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fixRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fixCount"
+            tools:itemCount="10"
+            tools:listitem="@layout/fix_item_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

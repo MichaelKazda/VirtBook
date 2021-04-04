@@ -8,12 +8,10 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlin.math.roundToInt
 
-
 /**
  * Class for handling data, but not accessing them
  */
 class DataHandler {
-
     private val db = Firebase.firestore
 
     // Returns data maps for garage site
