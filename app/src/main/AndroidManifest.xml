@@ -11,9 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VirtBook">
         <activity
+            android:name=".Loader"
+            android:theme="@style/Theme.VirtBook.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login"
+            android:theme="@style/Theme.VirtBook.NoActionBar"/>
+        <activity
             android:name=".FixDetail"
-            android:theme="@style/Theme.VirtBook.NoActionBar"
-            />
+            android:theme="@style/Theme.VirtBook.NoActionBar" />
         <activity
             android:name=".FixHistory"
             android:theme="@style/Theme.VirtBook.NoActionBar" />
@@ -23,12 +33,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.VirtBook.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.VirtBook.NoActionBar" />
     </application>
 
 </manifest>

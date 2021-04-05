@@ -1,6 +1,5 @@
 package com.example.virtbook.services
 
-import android.util.ArrayMap
 import android.util.Log
 import com.example.virtbook.MyApp
 import com.google.firebase.firestore.DocumentSnapshot
@@ -9,7 +8,7 @@ import com.google.firebase.ktx.Firebase
 import kotlin.math.roundToInt
 
 /**
- * Class for handling data, but not accessing them
+ * Class for handling data
  */
 class DataHandler {
     private val db = Firebase.firestore

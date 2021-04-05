@@ -5,11 +5,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,9 +17,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.anychart.AnyChartView
 import com.example.virtbook.services.DataHandler
 import com.example.virtbook.services.GraphicsMaker
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.sql.Array
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,6 +35,8 @@ class FirstFragment : Fragment() {
     private val graphicsMaker = GraphicsMaker() // Handling graphics
     private val dataHandler = DataHandler() // Handling data
     private val db = Firebase.firestore // Access Firestore DB
+    private lateinit var auth: FirebaseAuth // Firebase auth instance
+    private lateinit var googleSignInClient: GoogleSignInClient // Google login instance
 
     // Gets data from DB and binds it to frontend
     @SuppressLint("SetTextI18n")
@@ -41,6 +46,7 @@ class FirstFragment : Fragment() {
             if (result != null){
                 // Obtaining data
                 val carData = dataHandler.getDataGarage(result, "carData")
+                val userData = dataHandler.getDataGarage(result, "userData")
                 val reminders = dataHandler.getDataGarage(result, "reminders")
                 val stats = dataHandler.getDataGarage(result, "stats")
                 val repairHistory = carData["repairHistory"] as ArrayList<*>
@@ -49,7 +55,7 @@ class FirstFragment : Fragment() {
                 // Car section
                 view?.findViewById<TextView>(R.id.carBrand)?.text = carData["brand"].toString() // Car brand
                 view?.findViewById<TextView>(R.id.carModel)?.text = carData["model"].toString() // Car model
-                view?.findViewById<TextView>(R.id.bookID)?.text = MyApp.bookID // Book ID
+                view?.findViewById<TextView>(R.id.bookID)?.text = userData["bookID"].toString() // Book ID
 
                 // Reminders section
                 // Car check KM reminder
@@ -114,6 +120,21 @@ class FirstFragment : Fragment() {
                         }
                         startActivity(intentFixHistory)
                     }
+                }
+
+                // Logout button
+                auth = FirebaseAuth.getInstance()   // Firebase auth instance
+                val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build()
+                googleSignInClient = activity?.let { GoogleSignIn.getClient(it, gso) }!!
+                view?.findViewById<ImageView>(R.id.logoutIcon)?.setOnClickListener{
+                    auth.signOut()
+                    googleSignInClient.signOut()
+                    val loginIntent = Intent(activity, Login::class.java)
+                    startActivity(loginIntent)
+                    activity?.finish()
                 }
 
                 // Reset refresher

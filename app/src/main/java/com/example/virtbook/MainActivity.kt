@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.virtbook.services.DataHandler
 import com.onesignal.OneSignal
 
-
 class MainActivity : AppCompatActivity() {
 
     private val dataHandler = DataHandler()
@@ -25,8 +24,6 @@ class MainActivity : AppCompatActivity() {
         // Getting notificationToken and saving into DB
         val notifToken = OneSignal.getPermissionSubscriptionState().subscriptionStatus.userId
         dataHandler.saveNotifToken(notifToken)
-
-        MyApp.bookID="EA45I"
     }
 
 }

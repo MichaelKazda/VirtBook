@@ -30,4 +30,8 @@
     <string name="fixCountHeadline">Počet úkonů</string>
     <string name="fixCostsHeadline">Celkové náklady</string>
     <string name="fixDetailHeadline">Detail úkonu</string>
+    <string name="Login_headline1">Virtuální</string>
+    <string name="Login_headline2">Servisní</string>
+    <string name="Login_headline3">Knížka</string>
+    <string name="login_btn">PŘIHLÁSIT SE POMOCÍ GOOGLE</string>
 </resources>
