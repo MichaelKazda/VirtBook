@@ -92,7 +92,7 @@ class FirstFragment : Fragment() {
 
                 // Car check button
                 view?.findViewById<Button>(R.id.checkBtn)?.setOnClickListener {
-                    if(carData["carCheck"].toString().isEmpty()){
+                    if(repairHistory.size <= 0){
                         Toast.makeText(activity, "Nejdříve si nechte vůz prohlídnout.", Toast.LENGTH_SHORT).show()
                     }else{
                         // Creating new activity

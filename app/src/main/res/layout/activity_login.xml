@@ -7,7 +7,7 @@
     tools:context=".Login">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/newUserHeadline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@+id/newUserHeadline2" />
 
     <TextView
         android:id="@+id/textView3"

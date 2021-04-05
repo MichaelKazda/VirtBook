@@ -3,7 +3,6 @@ package com.example.virtbook
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -57,12 +56,10 @@ class Login : AppCompatActivity() {
                 try {
                     // Google Sign In was successful, authenticate with Firebase
                     val account = signInTask.getResult(ApiException::class.java)!!
-                    Log.d("Google sign in", "firebaseAuthWithGoogle:" + account.id)
                     firebaseAuthWithGoogle(account.idToken!!)
                 } catch (e: ApiException) {
                     // Google Sign In failed
-                    findViewById<TextView>(R.id.signInError)?.text = "Přihlášení selhalo"
-                    Log.w("Google sign in", signInTask.exception.toString())
+                    findViewById<TextView>(R.id.signInError)?.text = getString(R.string.loginFailureMsg)
                 }
             }
         }
@@ -79,27 +76,27 @@ class Login : AppCompatActivity() {
                         .whereEqualTo("googleLoginToken", auth.currentUser.uid)
                         .get()
                         .addOnSuccessListener { result ->
-                            if (result != null) {
-                                // User is in database
+                            if (result != null && result.documents.isNotEmpty()) {
+                                // User is already in database
                                 MyApp.userID = result.documents[0].id
                                 val mainAcIntent = Intent(this, MainActivity::class.java)
                                 startActivity(mainAcIntent)
                                 finish()
                             } else {
                                 // User is not in database -> first time user
-                                Log.w("Google sign in", "User neni v DB")
+                                val newUserIntent = Intent(this, NewUser::class.java)
+                                startActivity(newUserIntent)
+                                finish()
                             }
                         }
                         .addOnFailureListener{
-                            Log.w("Google sign in", "Vytažení z DB failnulo")
+                            findViewById<TextView>(R.id.signInError)?.text = getString(R.string.loginFailureMsg)
                         }
                         // TODO NE-> Redirect na form pro vyplneni zakladiho infa -> generovani bookID -> vytvoreni zapisu v DB -> zapsat userID do global variable a redirect na main action
-                        // TODO Smazat logy
                         // TODO Dokumentace
                 } else {
                     // Authentication failed
-                    findViewById<TextView>(R.id.signInError)?.text = "Přihlášení selhalo"
-                    Log.w("Google sign in", "signInWithCredential:failure", task.exception)
+                    findViewById<TextView>(R.id.signInError)?.text = getString(R.string.loginFailureMsg)
                 }
             }
     }

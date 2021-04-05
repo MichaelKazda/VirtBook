@@ -34,4 +34,21 @@
     <string name="Login_headline2">Servisní</string>
     <string name="Login_headline3">Knížka</string>
     <string name="login_btn">PŘIHLÁSIT SE POMOCÍ GOOGLE</string>
+    <string name="loginFailureMsg">Přihlášení selhalo</string>
+    <string name="newUserText">Značka vašeho vozidla</string>
+    <string name="newUserText2">Škoda</string>
+    <string name="newUserText3">Servisní knížce</string>
+    <string name="newUserText4">Vítejte ve vaší nové</string>
+    <string name="newUserText5">Model vašeho vozidla</string>
+    <string name="newUserText6">Octavia</string>
+    <string name="newUserText7">Řekněte nám něco</string>
+    <string name="newUserText8">o vašem vozidle</string>
+    <string name="newUserBtn">Pokračovat</string>
+    <string name="newUserError">Prosím vyplňte údaje o voze</string>
+    <string name="peepoHappy">peepoHappy</string>
+    <string name="text">naplnit daty o voze...</string>
+    <string name="text1">Servisní knížku</string>
+    <string name="text2">A teď už jen vaší novou</string>
+    <string name="btnText">Pokračovat do neaktivované knížky</string>
+    <string name="btnText2">Přijít až po prohlídce</string>
 </resources>

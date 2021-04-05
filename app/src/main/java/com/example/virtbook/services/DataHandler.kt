@@ -2,9 +2,11 @@ package com.example.virtbook.services
 
 import android.util.Log
 import com.example.virtbook.MyApp
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.lang.StringBuilder
 import kotlin.math.roundToInt
 
 /**
@@ -76,8 +78,60 @@ class DataHandler {
         try {
             db.collection("users").document(MyApp.userID).update("notificationToken", notifToken)
         }catch (e: Exception){
-            Log.e("SavingNotifToken Err", notifToken)
+            Log.e("Saving notif token", e.toString())
         }
     }
 
+    // Generate bookID
+    fun genBookID(): String{
+        val chars = ('A'..'Z') + ('0'..'9')  // Allowed characters - only caps and numbers
+        val bookID = StringBuilder()
+        for (i in 1..5){
+            bookID.append(chars.random())
+        }
+        return bookID.toString()
+    }
+
+    // Insert new user into DB
+    fun newUserInDB(bookID: String, googleLoginToken: String, email: String?, name: String?, carBrand: String, carModel: String): String {
+        // Set up data in format
+        val user = hashMapOf(
+            "active" to true,
+            "bookID" to bookID,
+            "carData" to hashMapOf(
+                "brand" to carBrand,
+                "carCheck" to "",
+                "model" to carModel,
+                "reminders" to hashMapOf(
+                    "dateOilChange" to 0,
+                    "dateSTK" to 0,
+                    "kmNextCheck" to 0
+                ),
+                "repairHistory" to arrayListOf<HashMap<*,*>>(),
+                "stats" to hashMapOf(
+                    "costsTotal" to 0,
+                    "errorsTotal" to 0,
+                    "fixPrice" to 0,
+                    "kmTotal" to 0,
+                    "registerDay" to System.currentTimeMillis(),
+                    "repairsTotal" to 0
+                )
+            ),
+            "e-mail" to email,
+            "googleLoginToken" to googleLoginToken,
+            "name" to name,
+            "notificationToken" to "",
+        )
+
+        try {
+            // Saving into DB
+            val newDoc = db.collection("users").document()
+            newDoc.set(user)
+            // Return id of newly created document
+            return newDoc.id
+        }catch (e: Exception){
+            Log.e("saving new user", e.toString())
+            return ""
+        }
+    }
 }

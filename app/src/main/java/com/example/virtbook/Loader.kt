@@ -18,7 +18,7 @@ class Loader : AppCompatActivity() {
 
         // Waits 1,5sec and checks if user is logged in. If not redirect to login
         Handler(Looper.getMainLooper()).postDelayed({
-            if(logChecker != null){
+            if(logChecker != null && MyApp.userID.isNotEmpty()){
                 val mainAcIntent = Intent(this, MainActivity::class.java)
                 startActivity(mainAcIntent)
                 finish()

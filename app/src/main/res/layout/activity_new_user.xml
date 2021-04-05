@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUser">
+
+    <TextView
+        android:id="@+id/newUserHeadline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:fontFamily="@font/poppins_thin"
+        android:text="@string/newUserText4"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.110000014" />
+
+    <TextView
+        android:id="@+id/newUserHeadline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/newUserText3"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/newUserHeadline1"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <TextView
+        android:id="@+id/newUserHeadline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/newUserText7"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserHeadline2" />
+
+    <TextView
+        android:id="@+id/newUserHeadline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/newUserText8"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/newUserHeadline3" />
+
+    <TextView
+        android:id="@+id/newUserForm1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/poppins_thin"
+        android:text="@string/newUserText"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserHeadline4" />
+
+    <EditText
+        android:id="@+id/carBrandInput"
+        android:layout_width="238dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:autofillHints=""
+        android:backgroundTint="@color/black"
+        android:hint="@string/newUserText2"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textCursorDrawable="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserForm1" />
+
+    <TextView
+        android:id="@+id/newUserForm2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_thin"
+        android:text="@string/newUserText5"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carBrandInput" />
+
+    <EditText
+        android:id="@+id/carModelInput"
+        android:layout_width="238dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:autofillHints=""
+        android:backgroundTint="@color/black"
+        android:hint="@string/newUserText6"
+        android:inputType="text"
+        android:maxLength="10"
+        android:textCursorDrawable="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserForm2" />
+
+    <Button
+        android:id="@+id/newUserBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/newUserBtn"
+        android:textSize="12sp"
+        app:cornerRadius="8sp"
+        app:icon="@drawable/ic_baseline_arrow_right_24"
+        app:iconGravity="end"
+        app:iconPadding="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carModelInput" />
+
+    <TextView
+        android:id="@+id/newUserError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_thin"
+        android:text=""
+        android:textColor="#DC3838"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

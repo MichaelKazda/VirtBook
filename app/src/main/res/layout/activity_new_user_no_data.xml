@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUserNoData">
+
+    <TextView
+        android:id="@+id/newUserNDHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:fontFamily="@font/poppins_thin"
+        android:text="@string/text2"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.110000014" />
+
+    <TextView
+        android:id="@+id/newUserNDHeadline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/text1"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/newUserNDHeadline" />
+
+    <TextView
+        android:id="@+id/newUserNDHeadline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="45dp"
+        android:fontFamily="@font/poppins_thin"
+        android:text="@string/text"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserNDHeadline" />
+
+    <TextView
+        android:id="@+id/newUserNDHeadline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins_thin"
+        android:text="Aby se vaše nová servisní knížka\naktivovala, je nutné provést\ntechnickou prohlídku vašeho vozidla.\n\nZjistíte tím v jaké je vaše vozidlo\nreálném stavu, abyste mohli\nbezpečně a bezstarostně vyrazit\nna další cesty."
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserNDHeadline4" />
+
+    <TextView
+        android:id="@+id/newUserBookIDHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppins_thin"
+        android:text="@string/bookID"
+        android:textColor="#5E5E5E"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserNDHeadline2" />
+
+    <TextView
+        android:id="@+id/newUserBookID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppins"
+        android:text="AS52S"
+        android:textColor="#5E5E5E"
+        android:textIsSelectable="true"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/newUserBookIDHeading"
+        app:layout_constraintTop_toBottomOf="@+id/newUserNDHeadline2" />
+
+    <Button
+        android:id="@+id/newUserNDContinueBtn"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppins"
+        android:text="@string/btnText"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:cornerRadius="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserNDEndBtn"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+    <Button
+        android:id="@+id/newUserNDEndBtn"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/btnText2"
+        android:textSize="12sp"
+        app:cornerRadius="8sp"
+        app:icon="@drawable/ic_baseline_arrow_right_24"
+        app:iconGravity="end"
+        app:iconPadding="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserNDHeadline2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
