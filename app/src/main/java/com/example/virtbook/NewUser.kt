@@ -1,16 +1,14 @@
 package com.example.virtbook
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.example.virtbook.services.DataHandler
 import com.google.firebase.auth.FirebaseAuth
+import com.onesignal.OneSignal
 
 class NewUser : AppCompatActivity() {
     private var dataHandler = DataHandler()
@@ -36,7 +34,14 @@ class NewUser : AppCompatActivity() {
                 auth = FirebaseAuth.getInstance()
                 MyApp.userID = dataHandler.newUserInDB(bookID, auth.currentUser.uid, auth.currentUser.email, auth.currentUser.displayName, carBrand, carModel)
 
-                // Redirect to message activity
+                // Setting up OneSignal notification, sending request for notification token to OneSignal server
+                OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+                OneSignal.startInit(this)
+                    .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                    .unsubscribeWhenNotificationsAreDisabled(true)
+                    .init()
+
+                // Redirect to new user message activity
                 val noDataMsgIntent = Intent(this, NewUserNoData::class.java)
                 startActivity(noDataMsgIntent)
                 finish()

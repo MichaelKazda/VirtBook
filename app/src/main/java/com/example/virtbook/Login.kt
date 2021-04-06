@@ -92,8 +92,6 @@ class Login : AppCompatActivity() {
                         .addOnFailureListener{
                             findViewById<TextView>(R.id.signInError)?.text = getString(R.string.loginFailureMsg)
                         }
-                        // TODO NE-> Redirect na form pro vyplneni zakladiho infa -> generovani bookID -> vytvoreni zapisu v DB -> zapsat userID do global variable a redirect na main action
-                        // TODO Dokumentace
                 } else {
                     // Authentication failed
                     findViewById<TextView>(R.id.signInError)?.text = getString(R.string.loginFailureMsg)

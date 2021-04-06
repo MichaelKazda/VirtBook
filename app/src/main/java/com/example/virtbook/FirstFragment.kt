@@ -92,7 +92,7 @@ class FirstFragment : Fragment() {
 
                 // Car check button
                 view?.findViewById<Button>(R.id.checkBtn)?.setOnClickListener {
-                    if(repairHistory.size <= 0){
+                    if(carData["carCheck"].toString().isEmpty()){
                         Toast.makeText(activity, "Nejdříve si nechte vůz prohlídnout.", Toast.LENGTH_SHORT).show()
                     }else{
                         // Creating new activity
@@ -108,7 +108,7 @@ class FirstFragment : Fragment() {
 
                 // Fix history button
                 view?.findViewById<Button>(R.id.historyBtn)?.setOnClickListener {
-                    if(carData["repairHistory"].toString().isEmpty()){
+                    if(repairHistory.size <= 0){
                         Toast.makeText(activity, "Nejdříve si nechte vůz opravit.", Toast.LENGTH_SHORT).show()
                     }else {
                         // Creating new activity

@@ -2,14 +2,10 @@ package com.example.virtbook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.virtbook.services.GraphicsMaker
-import com.google.gson.Gson
-import com.google.gson.internal.LinkedTreeMap
-import com.google.gson.reflect.TypeToken
 
 class FixHistory : AppCompatActivity() {
     private var graphicsMaker = GraphicsMaker()
