@@ -72,5 +72,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/costsTotalHeadline" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/carcheckRecyclerMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fixCount"
+            tools:itemCount="10"
+            tools:listitem="@layout/carcheck_parrent_item_layout" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
