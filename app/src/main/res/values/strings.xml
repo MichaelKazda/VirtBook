@@ -46,9 +46,9 @@
     <string name="newUserBtn">Pokračovat</string>
     <string name="newUserError">Prosím vyplňte údaje o voze</string>
     <string name="peepoHappy">peepoHappy</string>
-    <string name="text">naplnit daty o voze...</string>
+    <string name="text">naplnit daty o voze…</string>
     <string name="text1">Servisní knížku</string>
-    <string name="text2">A teď už jen vaší novou</string>
+    <string name="text2">A teď už jen vaši novou</string>
     <string name="btnText">Pokračovat do neaktivované knížky</string>
     <string name="btnText2">Přijít až po prohlídce</string>
     <string name="icon">icon</string>

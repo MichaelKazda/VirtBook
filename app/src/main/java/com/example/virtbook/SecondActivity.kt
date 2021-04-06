@@ -33,8 +33,6 @@ class SecondActivity : AppCompatActivity() {
             json, object : TypeToken<HashMap<String?, Any?>?>() {}.type
         )
 
-        // TODO Opakovat proces jako u úkonů s vypsání do recycler view -> tentokrát dvojitý (vnitřní list check bodů a vnější list karet jednotlivých check sekcí)
-        // TODO Dokumentace
         // Dividing parsed json data into lists
         val checklists = data["productChecklist"] as List<*>
         var x = 1
