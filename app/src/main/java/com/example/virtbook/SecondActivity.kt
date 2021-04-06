@@ -19,10 +19,7 @@ import kotlin.collections.HashMap
 class SecondActivity : AppCompatActivity() {
     private val graphicsMaker = GraphicsMaker()
 
-    private var checkAreaList = mutableListOf<String>()
-    private var checkPointList = mutableListOf<String>()
-    private var checkIconList = mutableListOf<String>()
-    private var checkDescList = mutableListOf<String>()
+    private var checkList = mutableListOf<HashMap<*,*>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +40,11 @@ class SecondActivity : AppCompatActivity() {
         var x = 1
         while(x <= checklists.size - 1){
             val checkArea = checklists[x] as LinkedTreeMap<*,*>
-            checkAreaList.add(checkArea["checkAreaName"].toString())
             val checkAreaChecklist = checkArea["checkAreaChecklist"] as ArrayList<*>
+            val checkAreaName = checkArea["checkAreaName"].toString()
+            val checkPointList = mutableListOf<String>()
+            val checkIconList = mutableListOf<String>()
+            val checkDescList = mutableListOf<String>()
             for(checkPoint in checkAreaChecklist){
                 checkPoint as LinkedTreeMap<*,*>
                 val value = checkPoint["value"] as LinkedTreeMap<*,*>
@@ -52,13 +52,21 @@ class SecondActivity : AppCompatActivity() {
                 checkIconList.add(value["bool"].toString())
                 checkDescList.add(value["note"].toString())
             }
+            checkList.add(
+                    hashMapOf(
+                        "checkArea" to checkAreaName,
+                        "checkPoint" to checkPointList,
+                        "checkIcon" to checkIconList,
+                        "checkDesc" to checkDescList
+                    )
+            )
             x++
         }
 
         /*BINDING DATA TO FRONTEND*/
         // Filling recycler view with data
         findViewById<RecyclerView>(R.id.carcheckRecyclerMain).layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.carcheckRecyclerMain).adapter = CarCheckParrentAdapter(checkAreaList, checkPointList, checkIconList, checkDescList)
+        findViewById<RecyclerView>(R.id.carcheckRecyclerMain).adapter = CarCheckParrentAdapter(checkList)
 
         // Stats section
         findViewById<TextView>(R.id.fixCount).text = graphicsMaker.spanIndex(errorsTotal as Long,"nálezů", resources.getDimensionPixelSize(R.dimen.big_index)) // Total errors found stat
